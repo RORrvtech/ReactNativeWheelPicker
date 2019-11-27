@@ -190,7 +190,14 @@ public class LoopView extends View {
             super.onDraw(canvas);
             return;
         }
+        //Error divide by zero on modal
+        if( !( (lineSpacingMultiplier * maxTextHeight) > 0 ) ) {
+            super.onDraw(canvas);
+            return;
+        }
+
         as = new String[itemCount];
+      
         change = (int) (totalScrollY / (lineSpacingMultiplier * maxTextHeight));
         preCurrentIndex = initPosition + change % arrayList.size();
         if (!isLoop) {
